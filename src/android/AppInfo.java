@@ -17,20 +17,27 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class AppInfo extends CordovaPlugin {
-
+public class AppInfo extends CordovaPlugin
+{
     @Override
-    public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-        if (action.equals("getAppInfo")) {
+    public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException
+    {
+        if (action.equals("getAppInfo"))
+        {
                 this.getAppInfo(callbackContext);
                 return true;
-        } else if (action.equals("getVersion")) {
+        }
+        else if (action.equals("getVersion"))
+        {
             this.getVersion(callbackContext);
             return true;
-        } else if (action.equals("getIdentifier")) {
+        }
+        else if (action.equals("getIdentifier"))
+        {
             this.getIdentifier(callbackContext);
             return true;
         }
+        
         return false;
     }
 
@@ -42,54 +49,67 @@ public class AppInfo extends CordovaPlugin {
         String packageDate = "";
 
         PackageManager pm = this.cordova.getActivity().getPackageManager();
-        try {
+        try
+        {
             PackageInfo packageInfo = pm.getPackageInfo(packageName, 0);
             versionName = packageInfo.versionName;
             versionCode = Integer.toString(packageInfo.versionCode);
 
-			 try{
+			 try
+			 {
 				ApplicationInfo ai = pm.getApplicationInfo(packageName, 0);
 				ZipFile zf = new ZipFile(ai.sourceDir);
 				ZipEntry ze = zf.getEntry("classes.dex");
 				long time = ze.getTime();
 				packageDate = (new SimpleDateFormat("MMddHHmm")).format(new java.util.Date(time));
 
-			 }catch(Exception e){
+			 }
+			 catch(Exception e)
+			 {
 			 }
 
-        } catch (NameNotFoundException e) {
+        }
+        catch (NameNotFoundException e)
+        {
         }
 
         JSONObject appInfo = new JSONObject();
-        try {
+        
+        try
+        {
             appInfo.put("identifier", packageName);
             appInfo.put("version", versionName);
             appInfo.put("build", versionCode);
             appInfo.put("buildDate", packageDate);
-        } catch (JSONException e) {
+        }
+        catch (JSONException e)
+        {
             callbackContext.error(e.getMessage());
         }
 
         callbackContext.success(appInfo);
     }
 
-    private void getVersion(CallbackContext callbackContext) {
-
+    private void getVersion(CallbackContext callbackContext)
+    {
         String versionName;
         String packageName = this.cordova.getActivity().getPackageName();
         PackageManager pm = this.cordova.getActivity().getPackageManager();
-        try {
+        try
+        {
             PackageInfo packageInfo = pm.getPackageInfo(packageName, 0);
             versionName = packageInfo.versionName;
-        } catch (NameNotFoundException nnfe) {
+        }
+        catch (NameNotFoundException nnfe)
+        {
             versionName = "";
         }
+        
         callbackContext.success(versionName);
-
     }
 
-    private void getIdentifier(CallbackContext callbackContext) {
-
+    private void getIdentifier(CallbackContext callbackContext)
+    {
         String packageName = this.cordova.getActivity().getPackageName();
         callbackContext.success(packageName);
     }
