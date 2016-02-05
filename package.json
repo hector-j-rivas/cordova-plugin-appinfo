@@ -1,7 +1,7 @@
 {
   "name": "cordova-plugin-appinfo",
-  "version": "2.0.2",
-  "description": "Cordova plugin to access app info (version number, identifier, build)",
+  "version": "2.0.3",
+  "description": "Cordova plugin to access app info (version number, identifier, build, build date)",
   "cordova": {
     "id": "cordova-plugin-appinfo",
     "platforms": [
@@ -12,10 +12,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/danmichaelo/cordova-plugin-appinfo"
+    "url": "https://github.com/torjo2k/cordova-plugin-appinfo"
   },
   "bugs": {
-    "url": "https://github.com/danmichaelo/cordova-plugin-appinfo/issues"
+    "url": "https://github.com/torjo2k/cordova-plugin-appinfo/issues"
   },
   "keywords": [
     "cordova",
@@ -25,8 +25,8 @@
     "cordova-wp8"
   ],
   "author": {
-    "name": "Dan Michael O. Heggø",
-    "url": "https://github.com/danmichaelo"
+    "name": "Hector J. Rivas",
+    "url": "https://github.com/torjo2k"
   },
   "contributors": [
     {
@@ -39,5 +39,5 @@
     }
   ],
   "license": "MIT",
-  "homepage": "https://github.com/danmichaelo/cordova-plugin-appinfo#readme"
+  "homepage": "https://github.com/torjo2k/cordova-plugin-appinfo#readme"
 }
