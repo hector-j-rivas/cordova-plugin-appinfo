@@ -8,7 +8,7 @@ module.exports = {
      * @param {Function} success    Callback method called on success.
      * @param {Function} fail       Callback method called on failure.
      */
-    getAppInfo: function(success, fail){
+    getAppInfo: function(success, fail) {
         exec(success, fail, 'AppInfo', 'getAppInfo', []);
     },
 
@@ -28,7 +28,7 @@ module.exports = {
      * @param {Function} success    Callback method called on success.
      * @param {Function} fail       Callback method called on failure.
      */
-    getIdentifier: function(success, fail){
+    getIdentifier: function(success, fail) {
         exec(success, fail, 'AppInfo', 'getIdentifier', []);
     }
 };
